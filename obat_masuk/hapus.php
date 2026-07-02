@@ -1,5 +1,5 @@
 <?php
-require '../config/Database.php';
+require '../config/database.php';
 require '../classes/ObatMasuk.php';
 
 $db = new Database();

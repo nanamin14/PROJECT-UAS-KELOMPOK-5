@@ -1,5 +1,5 @@
 <?php
-require '../config/Database.php';
+require '../config/database.php';
 require '../classes/ObatKeluar.php';
 
 $db = new Database();
@@ -12,11 +12,13 @@ $data = $obatKeluar->getAll();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Obat Keluar</title>
 </head>
+
 <body>
     <h2>Data Obat Keluar</h2>
     <a href="tambah.php">Tambah Obat Keluar</a> <br><br>
@@ -48,4 +50,5 @@ $data = $obatKeluar->getAll();
         <?php endforeach; ?>
     </table>
 </body>
+
 </html>

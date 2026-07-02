@@ -1,5 +1,5 @@
 <?php
-require '../config/Database.php';
+require '../config/database.php';
 require '../classes/ObatKeluar.php';
 
 $db = new Database();

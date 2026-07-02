@@ -1,5 +1,5 @@
 <?php
-require '../config/Database.php';
+require '../config/database.php';
 require '../classes/ObatKeluar.php';
 
 $db = new Database();
@@ -38,6 +38,7 @@ $obat = $conn->query(
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Obat Keluar</title>
 </head>
+
 <body>
     <h2>Tambah Obat Keluar</h2>
     <form method="POST">
@@ -58,4 +59,5 @@ $obat = $conn->query(
         <a href="index.php">Kembali</a>
     </form>
 </body>
+
 </html>

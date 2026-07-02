@@ -1,5 +1,5 @@
 <?php
-require '../config/Database.php';
+require '../config/database.php';
 require '../classes/ObatMasuk.php';
 
 $db = new Database();
@@ -29,11 +29,13 @@ $obat = $conn->query("SELECT * FROM obat ORDER BY nama_obat");
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Obat Masuk</title>
 </head>
+
 <body>
     <h2>Tambah Obat Masuk</h2>
     <form method="POST">
@@ -54,4 +56,5 @@ $obat = $conn->query("SELECT * FROM obat ORDER BY nama_obat");
         <a href="index.php">Kembali</a>
     </form>
 </body>
+
 </html>
