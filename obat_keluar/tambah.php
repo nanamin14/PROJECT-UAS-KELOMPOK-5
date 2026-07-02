@@ -1,6 +1,11 @@
 <?php
+session_start(); 
 require '../config/database.php';
 require '../classes/ObatKeluar.php';
+
+if (!isset($_SESSION['user_id'])) {
+    die("Anda harus login terlebih dahulu!");
+}
 
 $db = new Database();
 $conn = $db->connect();
@@ -9,26 +14,25 @@ $obatKeluar = new ObatKeluar($conn);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = [
-        'obat_id' => $_POST['obat_id'],
-        'jumlah' => $_POST['jumlah'],
-        'tanggal_keluar' => $_POST['tanggal_keluar'],
-        'keterangan' => $_POST['keterangan']
+        'obat_id'    => $_POST['obat_id'],
+        'jumlah'     => $_POST['jumlah'],
+        'tanggal'    => $_POST['tanggal'], 
+        'penerima'   => $_POST['penerima'], 
+        'keterangan' => $_POST['keterangan'],
+        'user_id'    => $_SESSION['user_id'] 
     ];
 
     if ($obatKeluar->create($data)) {
-        header("Location:index.php");
+        header("Location: index.php");
         exit;
     } else {
         echo "<script>
-                alert('Stok tidak mencukupi!');
+                alert('Stok tidak mencukupi atau data salah!');
               </script>";
     }
 }
 
-$obat = $conn->query(
-    "SELECT * FROM obat ORDER BY nama_obat"
-);
-
+$obat = $conn->query("SELECT * FROM obat ORDER BY nama_obat");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,15 +50,22 @@ $obat = $conn->query(
         <select name="obat_id" required>
             <option value="">Pilih Obat</option>
             <?php foreach ($obat as $o): ?>
-                <option value="<?= $o['id'] ?>"><?= $o['nama_obat'] ?></option>
+                <option value="<?= $o['id'] ?>"><?= $o['nama_obat'] ?> (Stok: <?= $o['stok'] ?>)</option>
             <?php endforeach; ?>
         </select> <br><br>
+
         <label>Jumlah</label><br>
         <input type="number" name="jumlah" min="1" required> <br><br>
-        <label>Tanggal Keluar</label><br>
-        <input type="date" name="tanggal_keluar" value="<?= date('Y-m-d') ?>" required> <br><br>
+
+        <label>Tanggal</label><br>
+        <input type="date" name="tanggal" value="<?= date('Y-m-d') ?>" required> <br><br>
+
+        <label>Penerima</label><br>
+        <input type="text" name="penerima" placeholder="Nama penerima obat..." required> <br><br>
+
         <label>Keterangan</label><br>
-        <input type="text" name="keterangan"> <br><br>
+        <input type="text" name="keterangan" placeholder="Alasan keluar / keperluan..."> <br><br>
+
         <button type="submit">Simpan</button>
         <a href="index.php">Kembali</a>
     </form>

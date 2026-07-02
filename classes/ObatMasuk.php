@@ -10,7 +10,7 @@ class ObatMasuk
     }
 
     public function getAll() {
-        $sql = "SELECT om.*, o.nama_obat FROM obat_masuk om JOIN obat o ON om.obat_id = o.id ORDER BY om.tanggal_masuk DESC";
+        $sql = "SELECT om.*, o.nama_obat FROM obat_masuk om JOIN obat o ON om.obat_id = o.id ORDER BY om.tanggal DESC";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -27,12 +27,12 @@ class ObatMasuk
         try {
             $this->conn->beginTransaction();
             //masukin transaksi
-            $sql = " INSERT INTO obat_masuk (obat_id, jumlah, tanggal_masuk, keterangan) VALUES (?, ?, ?, ?)";
+            $sql = " INSERT INTO obat_masuk (obat_id, jumlah, tanggal, keterangan) VALUES (?, ?, ?, ?)";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
                 $data['obat_id'],
                 $data['jumlah'],
-                $data['tanggal_masuk'],
+                $data['tanggal'],
                 $data['keterangan']
             ]);
             //update stok obat

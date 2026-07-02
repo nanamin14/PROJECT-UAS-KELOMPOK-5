@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../config/database.php';
 require '../classes/ObatKeluar.php';
 
@@ -7,7 +8,6 @@ $conn = $db->connect();
 
 $obatKeluar = new ObatKeluar($conn);
 $data = $obatKeluar->getAll();
-
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,8 @@ $data = $obatKeluar->getAll();
             <th>No</th>
             <th>Nama Obat</th>
             <th>Jumlah</th>
-            <th>Tanggal Keluar</th>
+            <th>Tanggal</th>
+            <th>Penerima</th>
             <th>Keterangan</th>
             <th>Aksi</th>
         </tr>
@@ -37,12 +38,11 @@ $data = $obatKeluar->getAll();
                 <td><?= $no++ ?></td>
                 <td><?= $row['nama_obat'] ?></td>
                 <td><?= $row['jumlah'] ?></td>
-                <td><?= $row['tanggal_keluar'] ?></td>
-                <td><?= $row['keterangan'] ?></td>
+                <td><?= $row['tanggal'] ?></td> 
+                <td><?= htmlspecialchars($row['penerima']) ?></td> 
+                <td><?= htmlspecialchars($row['keterangan']) ?></td>
                 <td>
-                    <a
-                        href="hapus.php?id=<?= $row['id'] ?>"
-                        onclick="return confirm('Hapus data?')">
+                    <a href="hapus.php?id=<?= $row['id'] ?>" onclick="return confirm('Hapus data?')">
                         Hapus
                     </a>
                 </td>

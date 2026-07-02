@@ -5,26 +5,30 @@ class ObatKeluar
     private $conn;
     private $table = "obat_keluar";
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->conn = $db;
     }
 
-    public function getAll() {
-        $sql = "SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o ON ok.obat_id = o.id ORDER BY ok.tanggal_keluar DESC";
+    public function getAll()
+    {
+        // Menampilkan data beserta nama obat dari kolom 'tanggal'
+        $sql = "SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o ON ok.obat_id = o.id ORDER BY ok.tanggal DESC";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getById($id) {
+    public function getById($id)
+    {
         $stmt = $this->conn->prepare("SELECT * FROM obat_keluar WHERE id=?");
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    //add transaksi
-    public function create($data) {
-        //cek stoknya
+    public function create($data)
+    {
+        //cek stok
         $cek = $this->conn->prepare("SELECT stok FROM obat WHERE id=?");
         $cek->execute([$data['obat_id']]);
         $stok = $cek->fetch(PDO::FETCH_ASSOC);
@@ -35,16 +39,19 @@ class ObatKeluar
 
         try {
             $this->conn->beginTransaction();
-            //masukin transaksi
-            $sql = "INSERT INTO obat_keluar (obat_id, jumlah, tanggal_keluar, keterangan) VALUES (?, ?, ?, ?)";
+            //nambah data transaksi obat keluar
+            $sql = "INSERT INTO obat_keluar (obat_id, jumlah, tanggal, penerima, keterangan, user_id) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
                 $data['obat_id'],
                 $data['jumlah'],
-                $data['tanggal_keluar'],
-                $data['keterangan']
+                $data['tanggal'],
+                $data['penerima'], 
+                $data['keterangan'],
+                $data['user_id']   
             ]);
-            //ngurangin stok
+
+            //ngurangin stok obat 
             $update = "UPDATE obat SET stok = stok - ? WHERE id = ?";
             $stmt2 = $this->conn->prepare($update);
             $stmt2->execute([
@@ -59,14 +66,14 @@ class ObatKeluar
         }
     }
 
-    //hapus transaksi
-    public function delete($id) {
+    public function delete($id)
+    {
         $stmt = $this->conn->prepare("DELETE FROM obat_keluar WHERE id=?");
         return $stmt->execute([$id]);
     }
 
-    //total obat keluar
-    public function total() {
+    public function total()
+    {
         $stmt = $this->conn->prepare("SELECT SUM(jumlah) AS total FROM obat_keluar");
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);

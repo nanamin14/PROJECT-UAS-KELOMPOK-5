@@ -13,11 +13,42 @@ $keluar = $conn->query("SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laporan Inventaris Obat</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        h1,
+        h2 {
+            margin-top: 30px;
+        }
+    </style>
 </head>
+
 <body>
     <h1>LAPORAN INVENTARIS OBAT</h1>
     <h2>1. Laporan Stok Obat</h2>
@@ -91,4 +122,5 @@ $keluar = $conn->query("SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o
         <?php endforeach; ?>
     </table>
 </body>
+
 </html>
