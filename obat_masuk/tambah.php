@@ -11,8 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = [
         'obat_id' => $_POST['obat_id'],
         'jumlah' => $_POST['jumlah'],
-        'tanggal_masuk' => $_POST['tanggal_masuk'],
-        'keterangan' => $_POST['keterangan']
+        'tanggal' => $_POST['tanggal'],
+        'supplier' => $_POST['supplier'],
+        'user_id' => $_SESSION['user']['id']
     ];
 
     if ($obatMasuk->create($data)) {
@@ -49,9 +50,9 @@ $obat = $conn->query("SELECT * FROM obat ORDER BY nama_obat");
         <label>Jumlah</label><br>
         <input type="number" name="jumlah" min="1" required> <br><br>
         <label>Tanggal Masuk</label><br>
-        <input type="date" name="tanggal_masuk" value="<?= date('Y-m-d') ?>" required> <br><br>
-        <label>Keterangan</label><br>
-        <input type="text" name="keterangan"> <br><br>
+        <input type="date" name="tanggal" value="<?= date('Y-m-d') ?>" required> <br><br>
+        <label>Supplier</label><br>
+        <input type="text" name="supplier"> <br><br>
         <button type="submit">Simpan</button>
         <a href="index.php">Kembali</a>
     </form>

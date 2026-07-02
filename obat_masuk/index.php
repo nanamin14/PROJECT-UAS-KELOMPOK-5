@@ -11,11 +11,13 @@ $data = $obatMasuk->getAll();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Obat Masuk</title>
 </head>
+
 <body>
     <h2>Data Obat Masuk</h2>
     <a href="tambah.php">Tambah Obat Masuk</a> <br><br>
@@ -24,8 +26,9 @@ $data = $obatMasuk->getAll();
             <th>No</th>
             <th>Nama Obat</th>
             <th>Jumlah</th>
-            <th>Tanggal Masuk</th>
-            <th>Keterangan</th>
+            <th>Tanggal</th>
+            <th>Supplier</th>
+            <th>User ID</th>
             <th>Aksi</th>
         </tr>
         <?php
@@ -36,8 +39,9 @@ $data = $obatMasuk->getAll();
                 <td><?= $no++ ?></td>
                 <td><?= $row['nama_obat'] ?></td>
                 <td><?= $row['jumlah'] ?></td>
-                <td><?= $row['tanggal_masuk'] ?></td>
-                <td><?= $row['keterangan'] ?></td>
+                <td><?= $row['tanggal'] ?></td>
+                <td><?= $row['supplier'] ?></td>
+                <td><?= $row['user_id'] ?></td>
                 <td>
                     <a href="hapus.php?id=<?= $row['id'] ?>"
                         onclick="return confirm('Hapus data?')">
@@ -48,4 +52,5 @@ $data = $obatMasuk->getAll();
         <?php endforeach; ?>
     </table>
 </body>
+
 </html>
