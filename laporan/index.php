@@ -6,9 +6,9 @@ $conn = $db->connect();
 //laporan stok obatnya
 $stok = $conn->query("SELECT * FROM obat ORDER BY nama_obat");
 //laporan obat masuk
-$masuk = $conn->query("SELECT om.*, o.nama_obat FROM obat_masuk om JOIN obat o ON om.obat_id = o.id ORDER BY om.tanggal_masuk DESC");
+$masuk = $conn->query("SELECT om.*, o.nama_obat FROM obat_masuk om JOIN obat o ON om.obat_id = o.id ORDER BY om.tanggal DESC");
 //obat keluar
-$keluar = $conn->query("SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o ON ok.obat_id = o.id ORDER BY ok.tanggal_keluar DESC");
+$keluar = $conn->query("SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o ON ok.obat_id = o.id ORDER BY ok.tanggal DESC");
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +61,7 @@ $keluar = $conn->query("SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o
             <th>Satuan</th>
             <th>Stok</th>
             <th>Stok Minimum</th>
+            <th>Lokasi</th>
         </tr>
         <?php
         $no = 1;
@@ -74,6 +75,7 @@ $keluar = $conn->query("SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o
                 <td><?= $row['satuan'] ?></td>
                 <td><?= $row['stok'] ?></td>
                 <td><?= $row['stok_minimum'] ?></td>
+                <td><?= $row['lokasi'] ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
@@ -94,7 +96,7 @@ $keluar = $conn->query("SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o
                 <td><?= $no++ ?></td>
                 <td><?= $row['nama_obat'] ?></td>
                 <td><?= $row['jumlah'] ?></td>
-                <td><?= $row['tanggal_masuk'] ?></td>
+                <td><?= $row['tanggal'] ?></td>
                 <td><?= $row['keterangan'] ?></td>
             </tr>
         <?php endforeach; ?>
@@ -116,7 +118,7 @@ $keluar = $conn->query("SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o
                 <td><?= $no++ ?></td>
                 <td><?= $row['nama_obat'] ?></td>
                 <td><?= $row['jumlah'] ?></td>
-                <td><?= $row['tanggal_keluar'] ?></td>
+                <td><?= $row['tanggal'] ?></td>
                 <td><?= $row['keterangan'] ?></td>
             </tr>
         <?php endforeach; ?>
