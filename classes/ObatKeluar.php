@@ -12,7 +12,6 @@ class ObatKeluar
 
     public function getAll()
     {
-        // Menampilkan data beserta nama obat dari kolom 'tanggal'
         $sql = "SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o ON ok.obat_id = o.id ORDER BY ok.tanggal DESC";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
