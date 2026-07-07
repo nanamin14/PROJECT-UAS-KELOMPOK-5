@@ -26,7 +26,7 @@ if (
     $_SESSION['nama'] = $data['nama'];
     $_SESSION['role'] = $data['nama_role'];
 
-    header("Location: ../dashboard/index.php");
+    header("Location: ../dashboard.php");
 
 } else {
 
