@@ -1,4 +1,5 @@
 <?php
+require 'config/database.php';
 session_start();
 
 if (!isset($_SESSION['user'])) {
@@ -6,8 +7,15 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
+$db = new Database();
+$conn = $db->connect();
+
 $role = $_SESSION['role'];
 $nama = $_SESSION['nama'];
+
+$total_obat = $conn->query;
+$total_masuk = $conn->query("SELECT COUNT(*) FROM obat_masuk")->fetchColumn();
+$total_keluar
 ?>
 
 <!DOCTYPE html>
@@ -21,21 +29,21 @@ $nama = $_SESSION['nama'];
 <body>
     <h2>Inventaris Obat</h2>
     <?php if ($role == 'Admin'): ?>
-        <a href="../PROJECT-UAS-KELOMPOK-5/users/index.php">Kelola User</a>
-        <a href="../PROJECT-UAS-KELOMPOK-5/obat/index.php">Data Obat</a>
-        <a href="../PROJECT-UAS-KELOMPOK-5/obat_masuk/index.php">Obat Masuk</a>
-        <a href="../PROJECT-UAS-KELOMPOK-5/obat_keluar/index.php">Obat Keluar</a>
-        <a href="../PROJECT-UAS-KELOMPOK-5/laporan/index.php">Laporan</a>
+        <a href="users/index.php">Kelola User</a>
+        <a href="obat/index.php">Data Obat</a>
+        <a href="obat_masuk/index.php">Obat Masuk</a>
+        <a href="obat_keluar/index.php">Obat Keluar</a>
+        <a href="laporan/index.php">Laporan</a>
     <?php elseif ($role == 'Petugas'): ?>
-        <a href="../PROJECT-UAS-KELOMPOK-5/obat/index.php">Data Obat</a>
-        <a href="../PROJECT-UAS-KELOMPOK-5/obat_masuk/index.php">Obat Masuk</a>
-        <a href="../PROJECT-UAS-KELOMPOK-5/obat_keluar/index.php">Obat Keluar</a>
-        <a href="../PROJECT-UAS-KELOMPOK-5/laporan/index.php">Laporan</a>
+        <a href="obat/index.php">Data Obat</a>
+        <a href="obat_masuk/index.php">Obat Masuk</a>
+        <a href="obat_keluar/index.php">Obat Keluar</a>
+        <a href="laporan/index.php">Laporan</a>
     <?php elseif ($role == 'Viewer'): ?>
-        <a href="../PROJECT-UAS-KELOMPOK-5/obat_masuk/index.php">Lihat Data Obat</a>
-        <a href="../PROJECT-UAS-KELOMPOK-5/laporan/index.php">Laporan</a>
+        <a href="obat_masuk/index.php">Lihat Data Obat</a>
+        <a href="laporan/index.php">Laporan</a>
     <?php endif; ?>
-    <a href="../auth/logout.php">Logout</a>
+    <a href="auth/logout.php">Logout</a>
 
     <h1>Selamat Datang, <?= $nama ?></h1>
     <p>Role: <?= ucfirst($role) ?></p>
@@ -48,8 +56,8 @@ $nama = $_SESSION['nama'];
     <?php elseif ($role == 'viewer'): ?>
         <h2>Dashboard Viewer</h2>
         <p>Silakan lihat stok obat dan laporan.</p>
-            <b>Kontak Petugas Logistik:</b><br>
-            WA: 081122334455
+        <b>Kontak Petugas Logistik:</b><br>
+        WA: 081122334455
     <?php endif; ?>
 </body>
 
