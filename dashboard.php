@@ -13,9 +13,14 @@ $conn = $db->connect();
 $role = $_SESSION['role'];
 $nama = $_SESSION['nama'];
 
-$total_obat = $conn->query;
+$total_obat = $conn->query("SELECT COUNT(*) FROM obat")->fetchColumn();
 $total_masuk = $conn->query("SELECT COUNT(*) FROM obat_masuk")->fetchColumn();
-$total_keluar
+$total_keluar = $conn->query("SELECT COUNT(*) FROM obat_keluar")->fetchColumn();
+$total_user = $conn->query("SELECT COUNT(*) FROM users")->fetchColumn();
+$stok_menipis = $conn->query(
+    "SELECT COUNT(*) FROM obat
+    WHERE stok <= stok_minimum"
+)->fetchColumn();
 ?>
 
 <!DOCTYPE html>
@@ -48,16 +53,28 @@ $total_keluar
     <h1>Selamat Datang, <?= $nama ?></h1>
     <p>Role: <?= ucfirst($role) ?></p>
     <?php if ($role == 'admin'): ?>
-        <h2>Dashboard Admin</h2>
-        <p>Kelola seluruh inventaris obat.</p>
+        <h3>Data Obat</h3>
+        <p><?= $total_obat ?></p>
+        <h3>Obat Masuk</h3>
+        <p><?= $total_masuk ?></p>
+        <h3>Obat Keluar</h3>
+        <p><?= $total_keluar ?></p>
+        <h3>Total User</h3>
+        <p><?= $total_user ?></p>
     <?php elseif ($role == 'petugas'): ?>
-        <h2>Dashboard Petugas</h2>
-        <p>Kelola transaksi obat masuk dan keluar.</p>
+        <h3>Data Obat</h3>
+        <p><?= $total_obat ?></p>
+        <h3>Obat Masuk</h3>
+        <p><?= $total_masuk ?></p>
+        <h3>Obat Keluar</h3>
+        <p><?= $total_keluar ?></p>
     <?php elseif ($role == 'viewer'): ?>
-        <h2>Dashboard Viewer</h2>
-        <p>Silakan lihat stok obat dan laporan.</p>
-        <b>Kontak Petugas Logistik:</b><br>
-        WA: 081122334455
+        <h3>Data Obat</h3>
+        <p><?= $total_obat ?></p>
+        <h3>Stok Menipis</h3>
+        <p><?= $stok_menipis ?></p>
+        <h3>Kontak Petugas Logistik:</h3><br>
+        <p>WA: 081122334455</p>
     <?php endif; ?>
 </body>
 
