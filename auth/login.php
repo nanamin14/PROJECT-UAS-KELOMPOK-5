@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-
+<div class="login-box">
 <h2>LOGIN</h2>
 
 <form action="proses_login.php" method="POST">
