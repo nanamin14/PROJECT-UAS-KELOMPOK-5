@@ -10,9 +10,6 @@ class Obat
         $this->conn = $db;
     }
 
-    // ==========================
-    // MENAMPILKAN SEMUA DATA OBAT
-    // ==========================
     public function getAll()
     {
         $query = "SELECT * FROM {$this->table}
