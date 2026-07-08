@@ -55,10 +55,8 @@ class ObatMasuk
             $this->conn->commit();
             return true;
         } catch (Exception $e) {
-
             $this->conn->rollBack();
-
-            return false;
+            die($e->getMessage());
         }
     }
 

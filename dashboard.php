@@ -28,53 +28,119 @@ $stok_menipis = $conn->query(
 
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
-    <h2>Inventaris Obat</h2>
-    <?php if ($role == 'Admin'): ?>
-        <a href="users/index.php">Kelola User</a>
-        <a href="obat/index.php">Data Obat</a>
-        <a href="obat_masuk/index.php">Obat Masuk</a>
-        <a href="obat_keluar/index.php">Obat Keluar</a>
-        <a href="laporan/index.php">Laporan</a>
-    <?php elseif ($role == 'Petugas'): ?>
-        <a href="obat/index.php">Data Obat</a>
-        <a href="obat_masuk/index.php">Obat Masuk</a>
-        <a href="obat_keluar/index.php">Obat Keluar</a>
-        <a href="laporan/index.php">Laporan</a>
-    <?php elseif ($role == 'Viewer'): ?>
-        <a href="laporan/index.php">Laporan</a>
-    <?php endif; ?>
-    <a href="auth/logout.php">Logout</a>
+   <div class="navbar">
 
-    <h1>Selamat Datang, <?= $nama ?></h1>
-    <p>Role: <?= ucfirst($role) ?></p>
-    <?php if ($role == 'Admin'): ?>
+<?php if ($role == 'Admin'): ?>
+
+<a href="users/index.php">Kelola User</a>
+<a href="obat/index.php">Data Obat</a>
+<a href="obat_masuk/index.php">Obat Masuk</a>
+<a href="obat_keluar/index.php">Obat Keluar</a>
+<a href="laporan/index.php">Laporan</a>
+
+<?php elseif ($role == 'Petugas'): ?>
+
+<a href="obat/index.php">Data Obat</a>
+<a href="obat_masuk/index.php">Obat Masuk</a>
+<a href="obat_keluar/index.php">Obat Keluar</a>
+<a href="laporan/index.php">Laporan</a>
+
+<?php elseif ($role == 'Viewer'): ?>
+
+<a href="laporan/index.php">Laporan</a>
+
+<?php endif; ?>
+
+<a href="auth/logout.php" class="logout">Logout</a>
+
+</div>
+
+    <div class="welcome-card">
+
+    <div class="welcome-text">
+        <h2>👋 Selamat Datang, <?= htmlspecialchars($nama) ?></h2>
+        <p>Selamat datang di Sistem Inventaris Obat.</p>
+    </div>
+
+    <div class="role-badge">
+        <?= ucfirst($role) ?>
+    </div>
+
+</div>
+
+<?php if ($role == 'Admin'): ?>
+
+<div class="card-container">
+
+    <div class="card">
         <h3>Data Obat</h3>
         <p><?= $total_obat ?></p>
+    </div>
+
+    <div class="card">
         <h3>Obat Masuk</h3>
         <p><?= $total_masuk ?></p>
+    </div>
+
+    <div class="card">
         <h3>Obat Keluar</h3>
         <p><?= $total_keluar ?></p>
+    </div>
+
+    <div class="card">
         <h3>Total User</h3>
         <p><?= $total_user ?></p>
-    <?php elseif ($role == 'Petugas'): ?>
+    </div>
+
+</div>
+
+<?php elseif ($role == 'Petugas'): ?>
+
+<div class="card-container">
+
+    <div class="card">
         <h3>Data Obat</h3>
         <p><?= $total_obat ?></p>
+    </div>
+
+    <div class="card">
         <h3>Obat Masuk</h3>
         <p><?= $total_masuk ?></p>
+    </div>
+
+    <div class="card">
         <h3>Obat Keluar</h3>
         <p><?= $total_keluar ?></p>
-    <?php elseif ($role == 'Viewer'): ?>
+    </div>
+
+</div>
+
+<?php elseif ($role == 'Viewer'): ?>
+
+<div class="card-container">
+
+    <div class="card">
         <h3>Data Obat</h3>
         <p><?= $total_obat ?></p>
+    </div>
+
+    <div class="card">
         <h3>Stok Menipis</h3>
         <p><?= $stok_menipis ?></p>
-        <h3>Kontak Petugas Logistik:</h3>
-        <p>WA: 081122334455</p>
-    <?php endif; ?>
+    </div>
+
+    <div class="card">
+        <h3>Kontak Petugas</h3>
+        <p style="font-size:20px;">081122334455</p>
+    </div>
+
+</div>
+
+<?php endif; ?>
 </body>
 
 </html>
