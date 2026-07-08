@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../config/database.php';
 require '../classes/ObatMasuk.php';
 
@@ -6,6 +7,8 @@ $db = new Database();
 $conn = $db->connect();
 
 $obatMasuk = new ObatMasuk($conn);
+echo $_SESSION['user'];
+exit;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = [
@@ -13,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'jumlah' => $_POST['jumlah'],
         'tanggal' => $_POST['tanggal'],
         'supplier' => $_POST['supplier'],
-        'user_id' => $_SESSION['user']['id']
+        'user_id' => $_SESSION['user']
     ];
 
     if ($obatMasuk->create($data)) {
