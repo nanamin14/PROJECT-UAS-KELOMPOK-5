@@ -10,9 +10,6 @@ class Obat
         $this->conn = $db;
     }
 
-    // ==========================
-    // MENAMPILKAN SEMUA DATA OBAT
-    // ==========================
     public function getAll()
     {
         $query = "SELECT * FROM {$this->table}
@@ -24,9 +21,6 @@ class Obat
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // ==========================
-    // DETAIL BERDASARKAN ID
-    // ==========================
     public function getById($id)
     {
         $query = "SELECT * FROM {$this->table}
@@ -38,9 +32,6 @@ class Obat
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // ==========================
-    // TAMBAH DATA OBAT
-    // ==========================
     public function create($data)
     {
         $query = "INSERT INTO {$this->table}
@@ -77,9 +68,6 @@ class Obat
         ]);
     }
 
-    // ==========================
-    // UPDATE DATA OBAT
-    // ==========================
     public function update($id, $data)
     {
         $query = "UPDATE {$this->table}
@@ -107,9 +95,6 @@ class Obat
         ]);
     }
 
-    // ==========================
-    // HAPUS DATA
-    // ==========================
     public function delete($id)
     {
         $query = "DELETE FROM {$this->table}
@@ -120,9 +105,6 @@ class Obat
         return $stmt->execute([$id]);
     }
 
-    // ==========================
-    // SEARCH
-    // ==========================
     public function search($keyword)
     {
         $query = "SELECT *
@@ -146,9 +128,6 @@ class Obat
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // ==========================
-    // CEK KODE OBAT SUDAH ADA
-    // ==========================
     public function checkKode($kode)
     {
         $query = "SELECT COUNT(*) as total
@@ -161,9 +140,6 @@ class Obat
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // ==========================
-    // TOTAL JENIS OBAT
-    // ==========================
     public function totalObat()
     {
         $query = "SELECT COUNT(*) AS total
@@ -175,9 +151,6 @@ class Obat
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // ==========================
-    // TOTAL STOK
-    // ==========================
     public function totalStok()
     {
         $query = "SELECT SUM(stok) AS total
@@ -189,9 +162,6 @@ class Obat
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // ==========================
-    // STOK MENIPIS
-    // ==========================
     public function stokMinimum()
     {
         $query = "SELECT *
@@ -205,9 +175,6 @@ class Obat
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // ==========================
-    // UPDATE STOK
-    // ==========================
     public function updateStok($id, $stokBaru)
     {
         $query = "UPDATE {$this->table}

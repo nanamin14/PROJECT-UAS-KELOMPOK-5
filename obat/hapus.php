@@ -10,7 +10,6 @@ $conn = $db->connect();
 
 $obat = new Obat($conn);
 
-// Cek apakah ID dikirim
 if (!isset($_GET['id'])) {
     header("Location: index.php");
     exit;
@@ -18,14 +17,12 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-// Cek apakah data ada
 $dataObat = $obat->getById($id);
 
 if (!$dataObat) {
     die("Data obat tidak ditemukan.");
 }
 
-// Proses hapus
 if ($obat->delete($id)) {
     echo "
     <script>

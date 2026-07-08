@@ -18,7 +18,6 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-// Ambil data
 $dataObat = $obat->getById($id);
 
 if (!$dataObat) {

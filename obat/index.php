@@ -10,7 +10,6 @@ $conn = $db->connect();
 
 $obat = new Obat($conn);
 
-// Pencarian
 if (isset($_GET['search'])) {
     $keyword = trim($_GET['search']);
     $dataObat = $obat->search($keyword);

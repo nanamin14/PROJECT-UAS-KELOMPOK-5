@@ -18,7 +18,6 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-// Ambil data berdasarkan ID
 $dataObat = $obat->getById($id);
 
 if (!$dataObat) {
@@ -27,7 +26,6 @@ if (!$dataObat) {
 
 $pesan = "";
 
-// Proses Update
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $kode_obat    = trim($_POST['kode_obat']);
     $nama_obat    = trim($_POST['nama_obat']);
