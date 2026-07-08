@@ -27,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif ($stok < 0 || $stok_minimum < 0) {
         $pesan = "Stok tidak boleh bernilai negatif.";
     } else {
-        // Cek kode obat
         $cek = $obat->checkKode($kode_obat);
 
         if ($cek['total'] > 0) {
