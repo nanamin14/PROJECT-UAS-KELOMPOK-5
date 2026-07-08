@@ -45,14 +45,13 @@ $stok_menipis = $conn->query(
         <a href="obat_keluar/index.php">Obat Keluar</a>
         <a href="laporan/index.php">Laporan</a>
     <?php elseif ($role == 'Viewer'): ?>
-        <a href="obat_masuk/index.php">Lihat Data Obat</a>
         <a href="laporan/index.php">Laporan</a>
     <?php endif; ?>
     <a href="auth/logout.php">Logout</a>
 
     <h1>Selamat Datang, <?= $nama ?></h1>
     <p>Role: <?= ucfirst($role) ?></p>
-    <?php if ($role == 'admin'): ?>
+    <?php if ($role == 'Admin'): ?>
         <h3>Data Obat</h3>
         <p><?= $total_obat ?></p>
         <h3>Obat Masuk</h3>
@@ -61,19 +60,19 @@ $stok_menipis = $conn->query(
         <p><?= $total_keluar ?></p>
         <h3>Total User</h3>
         <p><?= $total_user ?></p>
-    <?php elseif ($role == 'petugas'): ?>
+    <?php elseif ($role == 'Petugas'): ?>
         <h3>Data Obat</h3>
         <p><?= $total_obat ?></p>
         <h3>Obat Masuk</h3>
         <p><?= $total_masuk ?></p>
         <h3>Obat Keluar</h3>
         <p><?= $total_keluar ?></p>
-    <?php elseif ($role == 'viewer'): ?>
+    <?php elseif ($role == 'Viewer'): ?>
         <h3>Data Obat</h3>
         <p><?= $total_obat ?></p>
         <h3>Stok Menipis</h3>
         <p><?= $stok_menipis ?></p>
-        <h3>Kontak Petugas Logistik:</h3><br>
+        <h3>Kontak Petugas Logistik:</h3>
         <p>WA: 081122334455</p>
     <?php endif; ?>
 </body>
