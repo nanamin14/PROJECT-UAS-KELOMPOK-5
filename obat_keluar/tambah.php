@@ -69,7 +69,6 @@ $obat = $conn->query("SELECT * FROM obat ORDER BY nama_obat");
             <label>Keterangan</label><br>
             <input type="text" name="keterangan" placeholder="Alasan keluar / keperluan..."> <br><br>
             <button type="submit">Simpan</button>
-            <a href="index.php">Kembali</a>
         </form>
     </div>
 </body>
