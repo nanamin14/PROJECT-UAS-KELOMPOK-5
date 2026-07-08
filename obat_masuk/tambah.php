@@ -7,8 +7,8 @@ $db = new Database();
 $conn = $db->connect();
 
 $obatMasuk = new ObatMasuk($conn);
-echo $_SESSION['user'];
-exit;
+// echo $_SESSION['user'];
+// exit;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = [

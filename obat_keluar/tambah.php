@@ -3,7 +3,7 @@ session_start();
 require '../config/database.php';
 require '../classes/ObatKeluar.php';
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user'])) {
     die("Anda harus login terlebih dahulu!");
 }
 
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'tanggal'    => $_POST['tanggal'], 
         'penerima'   => $_POST['penerima'], 
         'keterangan' => $_POST['keterangan'],
-        'user_id'    => $_SESSION['user_id'] 
+        'user_id'    => $_SESSION['user'] 
     ];
 
     if ($obatKeluar->create($data)) {
