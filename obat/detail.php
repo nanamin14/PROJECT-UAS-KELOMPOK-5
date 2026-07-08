@@ -10,7 +10,6 @@ $conn = $db->connect();
 
 $obat = new Obat($conn);
 
-// Cek apakah ID dikirim
 if (!isset($_GET['id'])) {
     header("Location: index.php");
     exit;
@@ -171,4 +170,5 @@ if (!$dataObat) {
     </div>
 
 </body>
+
 </html>
