@@ -90,7 +90,7 @@ $keluar = $conn->query("SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o
             <th>Nama Obat</th>
             <th>Jumlah</th>
             <th>Tanggal Masuk</th>
-            <th>Keterangan</th>
+            <th>Supplier</th>
         </tr>
         <?php
         $no = 1;
@@ -101,7 +101,7 @@ $keluar = $conn->query("SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o
                 <td><?= $row['nama_obat'] ?></td>
                 <td><?= $row['jumlah'] ?></td>
                 <td><?= $row['tanggal'] ?></td>
-                <td><?= $row['keterangan'] ?></td>
+                <td><?= $row['supplier'] ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
@@ -112,6 +112,7 @@ $keluar = $conn->query("SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o
             <th>Nama Obat</th>
             <th>Jumlah</th>
             <th>Tanggal Keluar</th>
+            <th>Penerima</th>
             <th>Keterangan</th>
         </tr>
         <?php
@@ -123,6 +124,7 @@ $keluar = $conn->query("SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o
                 <td><?= $row['nama_obat'] ?></td>
                 <td><?= $row['jumlah'] ?></td>
                 <td><?= $row['tanggal'] ?></td>
+                <td><?= $row['penerima'] ?></td>
                 <td><?= $row['keterangan'] ?></td>
             </tr>
         <?php endforeach; ?>
