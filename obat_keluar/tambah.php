@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 require '../config/database.php';
 require '../classes/ObatKeluar.php';
 
@@ -16,10 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = [
         'obat_id'    => $_POST['obat_id'],
         'jumlah'     => $_POST['jumlah'],
-        'tanggal'    => $_POST['tanggal'], 
-        'penerima'   => $_POST['penerima'], 
+        'tanggal'    => $_POST['tanggal'],
+        'penerima'   => $_POST['penerima'],
         'keterangan' => $_POST['keterangan'],
-        'user_id'    => $_SESSION['user'] 
+        'user_id'    => $_SESSION['user']
     ];
 
     if ($obatKeluar->create($data)) {
@@ -53,19 +53,14 @@ $obat = $conn->query("SELECT * FROM obat ORDER BY nama_obat");
                 <option value="<?= $o['id'] ?>"><?= $o['nama_obat'] ?> (Stok: <?= $o['stok'] ?>)</option>
             <?php endforeach; ?>
         </select> <br><br>
-
         <label>Jumlah</label><br>
         <input type="number" name="jumlah" min="1" required> <br><br>
-
         <label>Tanggal</label><br>
         <input type="date" name="tanggal" value="<?= date('Y-m-d') ?>" required> <br><br>
-
         <label>Penerima</label><br>
         <input type="text" name="penerima" placeholder="Nama penerima obat..." required> <br><br>
-
         <label>Keterangan</label><br>
         <input type="text" name="keterangan" placeholder="Alasan keluar / keperluan..."> <br><br>
-
         <button type="submit">Simpan</button>
         <a href="index.php">Kembali</a>
     </form>
