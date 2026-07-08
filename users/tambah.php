@@ -1,5 +1,4 @@
 <?php
-
 require '../config/Database.php';
 require '../classes/User.php';
 
@@ -8,39 +7,26 @@ $conn = $db->connect();
 
 $user = new User($conn);
 
-if($_POST){
-
+if ($_POST) {
     $user->create($_POST);
-
     header("Location:index.php");
 }
 
 $roles = $conn->query("SELECT * FROM roles");
-
 ?>
 
 <form method="POST">
+    <input type="text" name="nama" placeholder="Nama" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
 
-<input type="text" name="nama" placeholder="Nama" required>
+    <select name="role_id">
+        <?php foreach ($roles as $r) : ?>
+            <option value="<?= $r['id'] ?>">
+                <?= $r['nama_role'] ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
 
-<input type="email" name="email" placeholder="Email" required>
-
-<input type="password" name="password" placeholder="Password" required>
-
-<select name="role_id">
-
-<?php foreach($roles as $r): ?>
-
-<option value="<?= $r['id'] ?>">
-    <?= $r['nama_role'] ?>
-</option>
-
-<?php endforeach; ?>
-
-</select>
-
-<button type="submit">
-Tambah User
-</button>
-
+    <button type="submit">Tambah User</button>
 </form>
