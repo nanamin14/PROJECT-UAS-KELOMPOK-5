@@ -31,11 +31,11 @@ $data = $obatKeluar->getAll();
     <div class="action-bar">
 
         <a href="../dashboard.php" class="btn btn-secondary">
-            ← Kembali
+            Kembali
         </a>
 
         <a href="tambah.php" class="btn btn-primary">
-            + Tambah Obat Keluar
+            Tambah Obat Keluar
         </a>
 
     </div>

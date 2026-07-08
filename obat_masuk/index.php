@@ -24,10 +24,10 @@ $data = $obatMasuk->getAll();
         <h2>Data Obat Masuk</h2>
         <div class="action-bar">
             <a href="../dashboard.php" class="btn btn-secondary">
-                ← Kembali
+                Kembali
             </a>
             <a href="tambah.php" class="btn btn-primary">
-                + Tambah Obat Masuk
+                Tambah Obat Masuk
             </a>
         </div>
         <table>

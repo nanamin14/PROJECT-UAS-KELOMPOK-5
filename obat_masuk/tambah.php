@@ -44,7 +44,7 @@ $obat = $conn->query("SELECT * FROM obat ORDER BY nama_obat");
         <h2>Tambah Obat Masuk</h2>
         <div class="action-bar">
             <a href="index.php" class="btn btn-secondary">
-                ← Kembali
+                Kembali
             </a>
         </div>
         <form method="POST">
