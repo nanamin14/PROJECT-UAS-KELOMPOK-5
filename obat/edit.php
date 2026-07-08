@@ -10,7 +10,6 @@ $conn = $db->connect();
 
 $obat = new Obat($conn);
 
-// Cek ID
 if (!isset($_GET['id'])) {
     header("Location: index.php");
     exit;
