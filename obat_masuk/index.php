@@ -47,7 +47,6 @@ $data = $obatMasuk->getAll();
                 $no = 1;
                 foreach ($data as $row):
                 ?>
-
                     <tr>
                         <td><?= $no++ ?></td>
                         <td><?= htmlspecialchars($row['nama_obat']) ?></td>
