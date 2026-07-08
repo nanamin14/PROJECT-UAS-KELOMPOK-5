@@ -96,7 +96,7 @@ if (!$dataObat) {
     </style>
 </head>
 
-<body>
+<body> 
 
     <div class="container">
         <h2>Detail Data Obat</h2>

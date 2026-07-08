@@ -28,7 +28,7 @@ $data = $obatMasuk->getAll();
             <th>Jumlah</th>
             <th>Tanggal</th>
             <th>Supplier</th>
-            <th>User ID</th>
+            <th>Petugas</th>
             <th>Aksi</th>
         </tr>
         <?php
@@ -41,7 +41,7 @@ $data = $obatMasuk->getAll();
                 <td><?= $row['jumlah'] ?></td>
                 <td><?= $row['tanggal'] ?></td>
                 <td><?= $row['supplier'] ?></td>
-                <td><?= $row['user_id'] ?></td>
+                <td><?= htmlspecialchars($row['nama_user']) ?></td>
                 <td>
                     <a href="hapus.php?id=<?= $row['id'] ?>"
                         onclick="return confirm('Hapus data?')">

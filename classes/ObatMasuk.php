@@ -12,7 +12,7 @@ class ObatMasuk
 
     public function getAll()
     {
-        $sql = "SELECT om.*, o.nama_obat FROM obat_masuk om JOIN obat o ON om.obat_id = o.id ORDER BY om.tanggal DESC";
+        $sql = "SELECT om.*, o.nama_obat, u.nama AS nama_user FROM obat_masuk om JOIN obat o ON om.obat_id = o.id JOIN users u ON om.user_id = u.id ORDER BY om.tanggal DESC";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
