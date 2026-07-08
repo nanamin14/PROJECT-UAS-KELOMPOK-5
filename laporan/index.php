@@ -53,6 +53,7 @@ $keluar = $conn->query("SELECT ok.*, o.nama_obat FROM obat_keluar ok JOIN obat o
     <?php if (!isset($pdf)): ?>
             <a href="export_pdf.php" target="_blank">Export PDF</a>
     <?php endif; ?>
+    <a href="../dashboard.php">Kembali</a>
     <h1>LAPORAN INVENTARIS OBAT</h1>
     <h2>1. Laporan Stok Obat</h2>
     <table>

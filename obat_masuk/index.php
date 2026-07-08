@@ -20,7 +20,7 @@ $data = $obatMasuk->getAll();
 
 <body>
     <h2>Data Obat Masuk</h2>
-    <a href="tambah.php">Tambah Obat Masuk</a> <br><br>
+    <a href="tambah.php">Tambah Obat Masuk</a>
     <table border="1" cellpadding="10">
         <tr>
             <th>No</th>
